@@ -37,6 +37,20 @@ class ViewController: UIViewController {
         redSlader.minimumTrackTintColor = .red
         
         redTextField.text = String(redSlader.value)
+        
+        greenLabelOutlet.text = String(greenSlader.value)
+        
+        greenSlader.maximumTrackTintColor = .lightGray
+        greenSlader.minimumTrackTintColor = .green
+        
+        greenTextField.text = String(greenSlader.value)
+        
+        blueLabelOutlet.text = String(blueSlader.value)
+        
+        blueSlader.maximumTrackTintColor = .lightGray
+        blueSlader.minimumTrackTintColor = .blue
+        
+        blueTextField.text = String(blueSlader.value)
 
     }
 
@@ -47,10 +61,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func greenSladerAction() {
+        greenLabelOutlet.text = String(format: "%.2f", greenSlader.value)
+        greenTextField.text = String(format: "%.2f", greenSlader.value)
         updateColor()
     }
     
     @IBAction func blueSladerAction() {
+        blueLabelOutlet.text = String(format: "%.2f", blueSlader.value)
+        blueTextField.text = String(format: "%.2f", blueSlader.value)
         updateColor()
     }
     
