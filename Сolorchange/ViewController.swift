@@ -27,17 +27,31 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        updateColor()
     }
 
     @IBAction func redSladerAction() {
+        updateColor()
     }
     
     @IBAction func greenSladerAction() {
+        updateColor()
     }
     
     @IBAction func blueSladerAction() {
+        updateColor()
     }
     
+    
+    private func updateColor () {
+        let redAmuont = CGFloat(redSlader.value)
+        let greenAmount = CGFloat(greenSlader.value)
+        let blueAmount = CGFloat(blueSlader.value)
+        
+        let color = UIColor(red: redAmuont, green: greenAmount, blue: blueAmount, alpha: 1.0)
+        
+        colorView.backgroundColor = color
+    }
 }
 
