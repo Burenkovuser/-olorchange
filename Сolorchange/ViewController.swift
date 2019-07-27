@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var colorView: UIView!
     
@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         redSlader.maximumTrackTintColor = .lightGray
         redSlader.minimumTrackTintColor = .red
         
+        redTextField.keyboardType = .decimalPad
         redTextField.text = String(redSlader.value)
         
         greenLabelOutlet.text = String(greenSlader.value)
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
         greenSlader.maximumTrackTintColor = .lightGray
         greenSlader.minimumTrackTintColor = .green
         
+        greenTextField.keyboardType = .decimalPad
         greenTextField.text = String(greenSlader.value)
         
         blueLabelOutlet.text = String(blueSlader.value)
@@ -50,6 +52,7 @@ class ViewController: UIViewController {
         blueSlader.maximumTrackTintColor = .lightGray
         blueSlader.minimumTrackTintColor = .blue
         
+        blueTextField.keyboardType = .decimalPad
         blueTextField.text = String(blueSlader.value)
 
     }
@@ -81,6 +84,62 @@ class ViewController: UIViewController {
         let color = UIColor(red: redAmuont, green: greenAmount, blue: blueAmount, alpha: 1.0)
         
         colorView.backgroundColor = color
+        
+        self.addDoneButtonOnKeyboard()
+    }
+    
+    func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(
+            x: 0,
+            y: 0,
+            width: UIScreen.main.bounds.width,
+            height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(
+            title: "Done",
+            style: .done,
+            target: self,
+            action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.redTextField.inputAccessoryView = doneToolbar
+        self.greenTextField.inputAccessoryView = doneToolbar
+        self.blueTextField.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction(){
+        guard let redInputNumbersField = redTextField.text, !redInputNumbersField.isEmpty else { return }
+        redSlader.value = Float(redInputNumbersField) as! Float
+        redLabelOutlet.text = String(format: "%.2f", redSlader.value)
+        updateColor()
+        
+        guard let greenInputNumbersField = greenTextField.text, !greenInputNumbersField.isEmpty else { return }
+        greenSlader.value = Float(greenInputNumbersField) as! Float
+        greenLabelOutlet.text = String(format: "%.2f", greenSlader.value)
+        updateColor()
+        
+        guard let blueInputNumbersField = blueTextField.text, !blueInputNumbersField.isEmpty else { return }
+        blueSlader.value = Float(blueInputNumbersField) as! Float
+        blueLabelOutlet.text = String(format: "%.2f", blueSlader.value)
+        updateColor()
+        
+        self.view.endEditing(true)
+    }
+    
+    // если тапем по экрану, клавиатура уберается
+    @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
+        
+        redTextField.resignFirstResponder()
+        greenTextField.resignFirstResponder()
+        blueTextField.resignFirstResponder()
     }
 }
 
