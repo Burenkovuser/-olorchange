@@ -24,14 +24,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenTextField: UITextField!
     @IBOutlet weak var blueTextField: UITextField!
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateColor()
+        
+        redLabelOutlet.text = String(redSlader.value)
+        
+        redSlader.maximumTrackTintColor = .lightGray
+        redSlader.minimumTrackTintColor = .red
+        
+        redTextField.text = String(redSlader.value)
+
     }
 
     @IBAction func redSladerAction() {
+        redLabelOutlet.text = String(format: "%.2f", redSlader.value)
+        redTextField.text = String(format: "%.2f", redSlader.value)
         updateColor()
     }
     

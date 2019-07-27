@@ -100,7 +100,7 @@
                         <outlet property="greenTextField" destination="g75-T0-vY6" id="aOm-kd-iwt"/>
                         <outlet property="redLabelOutlet" destination="c5i-lw-MnT" id="mDN-E8-uUb"/>
                         <outlet property="redSlader" destination="FE4-y6-cN1" id="Kt4-nK-Y3f"/>
-                        <outlet property="redTextField" destination="g75-T0-vY6" id="vcm-P2-ceu"/>
+                        <outlet property="redTextField" destination="HFx-MW-4RY" id="ivp-fU-4nO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
