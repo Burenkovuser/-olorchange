@@ -58,19 +58,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func redSladerAction() {
-        redLabelOutlet.text = String(format: "%.2f", redSlader.value)
+        redLabelOutlet.text = "Red: " + String(format: "%.2f", redSlader.value)
         redTextField.text = String(format: "%.2f", redSlader.value)
         updateColor()
     }
     
     @IBAction func greenSladerAction() {
-        greenLabelOutlet.text = String(format: "%.2f", greenSlader.value)
+        greenLabelOutlet.text = "Green: " + String(format: "%.2f", greenSlader.value)
         greenTextField.text = String(format: "%.2f", greenSlader.value)
         updateColor()
     }
     
     @IBAction func blueSladerAction() {
-        blueLabelOutlet.text = String(format: "%.2f", blueSlader.value)
+        blueLabelOutlet.text = "Blue: " + String(format: "%.2f", blueSlader.value)
         blueTextField.text = String(format: "%.2f", blueSlader.value)
         updateColor()
     }
@@ -134,9 +134,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    // если тапем по экрану, клавиатура уберается
+    // если тапем по экрану, клавиатура убирается
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
-        
         redTextField.resignFirstResponder()
         greenTextField.resignFirstResponder()
         blueTextField.resignFirstResponder()
